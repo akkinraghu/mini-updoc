@@ -1,0 +1,27 @@
+{
+  "name": "updoc",
+  "version": "1.0.0",
+  "description": "Mini Updoc Project - Medical Ticketing System",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "build": "pnpm -r run build",
+    "start": "pnpm --filter server start",
+    "client": "pnpm --filter client start",
+    "server": "pnpm --filter server start"
+  },
+  "keywords": [
+    "updoc",
+    "medical",
+    "ticketing",
+    "react",
+    "express",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=7.0.0"
+  }
+}

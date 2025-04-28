@@ -5,7 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*'  // Allow all origins for now
+}));
 app.use(express.json());
 
 // Basic route for testing
@@ -189,5 +191,5 @@ app.get('/api/tickets/:id/actions', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

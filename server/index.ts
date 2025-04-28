@@ -71,6 +71,14 @@ app.post('/api/signup_or_login', (req, res) => {
   res.status(200).json(userWithoutPassword);
 });
 
+app.get('/api/users', (req, res) => {
+  const usersWithoutPasswords = users.map(user => {
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+  });
+  res.json(usersWithoutPasswords);
+});
+
 // Ticket routes
 app.get('/api/tickets', (req, res) => {
   res.json(tickets);

@@ -16,6 +16,9 @@ interface User {
   role: "patient" | "doctor";
 }
 
+// API base URL - use environment variable or fallback to local development URL
+const API_BASE_URL = "https://mini-updoc-backend-d7801bc6b0f2.herokuapp.com";
+
 // Components
 const Header: React.FC<{
   user: User | null;
@@ -64,7 +67,7 @@ const LoginSignup: React.FC<{ onLogin: (user: User) => void }> = ({
 
     try {
       const response = await fetch(
-        "http://localhost:3001/api/signup_or_login",
+        `${API_BASE_URL}/api/signup_or_login`,
         {
           method: "POST",
           headers: {
@@ -184,7 +187,7 @@ const Consultation: React.FC<{ user: User | null }> = ({ user }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:3001/api/tickets", {
+      const response = await fetch(`${API_BASE_URL}/api/tickets`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -256,7 +259,7 @@ const TicketView: React.FC<{ user: User | null }> = ({ user }) => {
 
   const fetchPatientDetails = useCallback(async (patientId: string) => {
     try {
-      const response = await fetch("http://localhost:3001/api/users");
+      const response = await fetch(`${API_BASE_URL}/api/users`);
       if (response.ok) {
         const users = await response.json();
         const patient = users.find((u: any) => u.id === patientId);
@@ -277,7 +280,7 @@ const TicketView: React.FC<{ user: User | null }> = ({ user }) => {
     
     try {
       // Fetch actions for the selected ticket
-      const response = await fetch(`http://localhost:3001/api/tickets/${ticket.id}/actions`);
+      const response = await fetch(`${API_BASE_URL}/api/tickets/${ticket.id}/actions`);
       if (response.ok) {
         const data = await response.json();
         setActions(data);
@@ -294,7 +297,7 @@ const TicketView: React.FC<{ user: User | null }> = ({ user }) => {
 
   const fetchTickets = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/tickets");
+      const response = await fetch(`${API_BASE_URL}/api/tickets`);
       if (response.ok) {
         const data = await response.json();
         
@@ -360,7 +363,7 @@ const TicketView: React.FC<{ user: User | null }> = ({ user }) => {
     
     try {
       const response = await fetch(
-        `http://localhost:3001/api/tickets/${currentTicket.id}`,
+        `${API_BASE_URL}/api/tickets/${currentTicket.id}`,
         {
           method: "PUT",
           headers: {
@@ -418,7 +421,7 @@ const TicketView: React.FC<{ user: User | null }> = ({ user }) => {
     
     try {
       const response = await fetch(
-        `http://localhost:3001/api/tickets/${currentTicket.id}?userId=${user.id}`,
+        `${API_BASE_URL}/api/tickets/${currentTicket.id}?userId=${user.id}`,
         {
           method: "DELETE",
         }

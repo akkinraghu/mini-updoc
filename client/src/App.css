@@ -1,889 +1,311 @@
-/* Reset and base styles */
+/* Basic Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Base Styles */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.5;
 }
 
+/* Default Theme Colors */
 :root {
   --primary-color: #54428f;
-  --primary-light: #8a7ab8;
-  --primary-dark: #3a2e63;
-  --primary-text: #ffffff;
-  --primary-hover: #6a5aaa;
-  --primary-bg-light: rgba(84, 66, 143, 0.1);
-  --primary-border: rgba(84, 66, 143, 0.3);
-  --gradient-primary: linear-gradient(135deg, #54428f, #8a7ab8);
-  --gradient-secondary: linear-gradient(135deg, #8a7ab8, #54428f);
-  --gradient-dark: linear-gradient(135deg, #3a2e63, #54428f);
-  --gradient-light: linear-gradient(135deg, #a596c7, #8a7ab8);
+  --primary-dark: #3c2f64;
+  --primary-bg-light: #efe9ff;
+  --secondary-color: #2ecc71;
+  --secondary-dark: #27ae60;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --text-light: #666;
+  --background-color: #f8f9fa;
+  --border-color: #ddd;
+  --hover-color: #f5f5f5;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.App {
-  text-align: center;
+/* Minecraft Theme */
+body.minecraft {
+  background-color: #5c5c5c;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+  background-size: 16px 16px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  max-width: 100%;
+  overflow-x: hidden;
+  --primary-color: #5d7c35;
+  --primary-dark: #465c28;
+  --primary-bg-light: #e8f5e0;
+  --secondary-color: #8c5e35;
+  --secondary-dark: #6e4a29;
+  --accent-color: #b02e26;
+  --text-color: #3a3a3a;
+  --text-light: #555;
+  --background-color: #e0e0e0;
+  --border-color: #b4b4b4;
+  --hover-color: #d0d0d0;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 1rem;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Header styles */
+/* Header Styles */
 .header {
-  background-color: var(--primary-color);
-  color: var(--primary-text);
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  position: relative;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-image {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1); /* Convert logo to white */
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
 }
 
 .header h1 {
   margin: 0;
-  text-align: center;
-  width: 100%;
+  color: #54428f;
+  font-size: 1.8rem;
 }
 
 .user-info {
   display: flex;
   align-items: center;
   gap: 1rem;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .user-info span {
-  margin-right: 1rem;
-  color: var(--primary-text);
   font-weight: 500;
 }
 
 .user-info button {
   padding: 0.5rem 1rem;
-  background: var(--gradient-primary);
-  color: var(--primary-text);
+  background-color: #54428f;
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
 }
 
 .user-info button:hover {
-  background: var(--gradient-dark);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
+  background-color: #3c2f64;
 }
 
-/* Main content */
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  width: 100%;
-}
-
-/* Login/Signup page */
-.login-signup {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.login-signup h2 {
-  text-align: center;
+/* Navigation */
+.navigation-links {
+  display: flex;
+  gap: 1rem;
   margin-bottom: 1.5rem;
-  color: var(--primary-color);
 }
 
-.login-signup .form-group {
-  margin-bottom: 1rem;
-}
-
-.login-signup label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.login-signup input,
-.login-signup select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.login-signup button {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 1rem;
-  background: var(--gradient-primary);
-  color: var(--primary-text);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.login-signup button:hover {
-  background: var(--gradient-dark);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.error-message {
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  background-color: #f8d7da;
-  color: #721c24;
-  border-radius: 4px;
-  text-align: center;
-}
-
-/* Welcome Page Styles */
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  text-align: center;
-  height: calc(100vh - 80px);
-  background: linear-gradient(135deg, rgba(84, 66, 143, 0.05), rgba(138, 122, 184, 0.1));
-  border-radius: 8px;
-}
-
-.welcome h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.welcome p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #555;
-  max-width: 600px;
-}
-
-.navigation {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.nav-button {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+.nav-link {
+  padding: 0.5rem 1rem;
+  background-color: #54428f;
   color: white;
+  border-radius: 4px;
   text-decoration: none;
-  border-radius: 30px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(84, 66, 143, 0.3);
-  transition: all 0.3s ease;
-  border: none;
-  min-width: 180px;
-  text-align: center;
+  transition: background-color 0.2s;
 }
 
-.nav-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(84, 66, 143, 0.4);
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+.nav-link:hover {
+  background-color: #3c2f64;
+  text-decoration: none;
 }
 
-.nav-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 5px rgba(84, 66, 143, 0.4);
-}
-
-.welcome-features {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  max-width: 1000px;
-}
-
-.feature {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(84, 66, 143, 0.15);
-  text-align: center;
-  width: 250px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(84, 66, 143, 0.2);
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.feature h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
-}
-
-.feature p {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 0;
-}
-
-.nav-button i {
-  margin-right: 0.5rem;
-}
-
-/* Consultation form */
-.consultation {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.consultation-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  height: 40px;
-  padding: 0 0.5rem;
-}
-
-.consultation-header h2 {
-  margin: 0;
-  line-height: 40px;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-button[type="submit"] {
-  padding: 0.75rem 1.5rem;
-  background: var(--gradient-primary);
-  color: var(--primary-text);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-button[type="submit"]:hover {
-  background: var(--gradient-dark);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-button[type="submit"]:disabled {
-  background-color: #95a5a6;
-  cursor: not-allowed;
-}
-
-/* Ticket list header and tabs */
-.ticket-list-header {
+/* Ticket View */
+.ticket-view {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  position: relative;
-  width: 100%;
-}
-
-.ticket-list-header h3 {
-  margin: 0;
-  padding: 0;
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  color: var(--primary-color);
-}
-
-.back-link {
-  cursor: pointer;
-  color: var(--primary-color);
-  font-weight: bold;
-  margin-right: 10px;
-  display: inline-block;
-}
-
-/* Tabs styling */
-.tabs {
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.tab-button {
-  padding: 8px 12px;
-  background: none;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  cursor: pointer;
-  margin-right: 2px;
-  font-size: 14px;
-  color: #666;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-}
-
-.tab-button i {
-  margin-right: 5px;
-  font-size: 14px;
-}
-
-.tab-button:hover {
-  background-color: #f5f5f5;
-  color: var(--primary-color);
-}
-
-.tab-button.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
-
-/* Ticket list styling */
-.ticket-list {
-  width: 30%;
-  min-width: 300px;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  min-height: 80vh;
-  max-height: 80vh;
+  height: 100vh;
   overflow: hidden;
 }
 
-.ticket-list ul {
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding: 0 20px;
+  height: calc(100vh - 180px);
+}
+
+.ticket-list-container {
+  flex: 1;
+  margin-right: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.ticket-details {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.ticket-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  border: 1px solid #ddd;
-  border-radius: 6px;
   overflow-y: auto;
-  flex-grow: 1;
-  max-height: calc(80vh - 120px); /* Account for header and padding */
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .ticket-list li {
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  transition: all 0.2s;
 }
 
 .ticket-list li:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .ticket-list li:hover {
   background-color: #f5f5f5;
+  border-color: #bbb;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ticket-list li.selected {
-  background-color: var(--primary-bg-light);
-  border-left: 4px solid var(--primary-color);
+  background-color: #efe9ff;
+  border-left: 4px solid #54428f;
+  border-color: #54428f;
 }
 
-.ticket-item {
+.ticket-header {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  padding: 12px;
-  margin: -5px 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
-.ticket-list li:hover .ticket-item {
-  border-color: #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
-}
-
-.ticket-list li.selected .ticket-item {
-  border-color: var(--primary-color);
-  box-shadow: 0 2px 8px rgba(84, 66, 143, 0.15);
-}
-
-.ticket-title {
-  font-weight: 600;
-  margin-bottom: 5px;
+.ticket-header h3 {
+  font-size: 1.1rem;
+  margin: 0;
   color: #333;
-  text-align: left;
 }
 
-.ticket-desc {
+.ticket-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-transform: capitalize;
+}
+
+.ticket-status-open {
+  background-color: #1890ff;
+}
+
+.ticket-status-in-progress {
+  background-color: #faad14;
+}
+
+.ticket-status-closed {
+  background-color: #52c41a;
+}
+
+.minecraft-theme .ticket-status {
+  font-family: 'Minecraft', monospace;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.minecraft-theme .ticket-status-open {
+  background-color: #3b8eea;
+}
+
+.minecraft-theme .ticket-status-in-progress {
+  background-color: #d9a334;
+}
+
+.minecraft-theme .ticket-status-closed {
+  background-color: #5b8731;
+}
+
+.ticket-description {
   font-size: 0.9rem;
   color: #666;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1;
+  margin: 10px 0;
   text-align: left;
 }
 
 .ticket-meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
+  font-size: 12px;
   color: #888;
-  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .ticket-date {
   font-style: italic;
 }
 
-.ticket-view {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  gap: 20px;
+.ticket-creator {
+  font-weight: bold;
 }
 
-.ticket-list {
-  width: 30%;
-  min-width: 300px;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  min-height: 80vh;
-  max-height: 80vh;
-  overflow: hidden;
+.minecraft-theme .ticket-meta {
+  color: #aaa;
+  font-family: 'Minecraft', monospace;
+  border-top: 1px solid #555;
+  padding-top: 5px;
 }
 
-.ticket-details {
-  flex: 1;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  min-height: 80vh;
-  max-height: 80vh;
-  overflow-y: auto;
+.minecraft-theme .ticket-date {
+  color: #bbb;
 }
 
-.ticket-details-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
+.minecraft-theme .ticket-creator {
+  color: #5b8731;
 }
 
-.ticket-details-header h3 {
-  margin: 0;
-  color: var(--primary-color);
-  font-size: 1.5rem;
-}
-
-.ticket-navigation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.nav-area {
-  display: flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.nav-area:hover {
-  background-color: #eee;
-}
-
-.nav-area.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.nav-prev {
-  margin-right: auto;
-}
-
-.nav-next {
-  margin-left: auto;
-}
-
-.ticket-count-indicator {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.ticket-info {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.ticket-info p {
-  margin: 10px 0;
-  display: flex;
-  align-items: flex-start;
-}
-
-.ticket-info p strong {
-  min-width: 120px;
-  display: inline-block;
-  color: #555;
-}
-
-.ticket-description {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 4px;
-  margin-top: 5px;
-  white-space: pre-wrap;
+.ticket-detail-description {
+  margin-top: 15px;
+  line-height: 1.6;
+  color: #444;
 }
 
 .ticket-actions {
+  margin-top: 20px;
   display: flex;
   gap: 10px;
-  margin: 20px 0;
+  flex-wrap: wrap;
 }
 
-.ticket-actions button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.ticket-actions button:hover {
-  background-color: var(--primary-dark);
-}
-
-.ticket-actions button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.ticket-actions .delete-button {
-  background-color: #e74c3c;
-}
-
-.ticket-actions .delete-button:hover {
-  background-color: #c0392b;
-}
-
-.action-log {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.action-log h4 {
-  margin-top: 0;
-  color: var(--primary-color);
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-}
-
-.action-log ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.action-log li {
-  padding: 10px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.action-log li:last-child {
-  border-bottom: none;
-}
-
-.action-time {
-  font-size: 0.8rem;
-  color: #777;
-  margin-right: 10px;
-}
-
-.action-user {
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.action-type {
-  font-style: italic;
-  color: #555;
-}
-
-.ticket-status-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  border-radius: 50%;
-  color: white;
-  font-size: 0.9rem;
-  margin-right: 8px;
-}
-
-.ticket-status-open .ticket-status-icon {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
-  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
-}
-
-.ticket-status-in-progress .ticket-status-icon {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
-}
-
-.ticket-status-closed .ticket-status-icon {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-  box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
-}
-
-.ticket-detail-status {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 0.5rem;
-  font-weight: 500;
-}
-
-.ticket-detail-status i {
-  margin-right: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.ticket-detail-status.status-open {
-  color: #e74c3c;
-}
-
-.ticket-detail-status.status-in-progress {
-  color: #3498db;
-}
-
-.ticket-detail-status.status-closed {
-  color: #2ecc71;
-}
-
-.status-text {
-  text-transform: capitalize;
-}
-
-/* Ticket management */
-.tickets {
+.ticket-actions-compact {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  width: 100%;
-  max-width: 100%;
-  height: 100vh;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-/* Pagination Styles */
-.pagination {
-  padding: 0.75rem 1rem;
-  border-top: 1px solid #eee;
-  margin-top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f9fa;
-}
-
-.pagination-button {
-  background: var(--gradient-primary);
-  color: var(--primary-text);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.pagination-button:hover {
-  background: var(--gradient-dark);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.pagination-button:disabled {
-  background: #95a5a6;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}
-
-.pagination-info {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.nav-back {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 1rem;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(84, 66, 143, 0.3);
-}
-
-.nav-back:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(84, 66, 143, 0.4);
-}
-
-.nav-back:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(84, 66, 143, 0.4);
-}
-
-.back-link {
-  color: var(--primary-color);
-  cursor: pointer;
-  font-size: 1.2rem;
-  margin-right: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease;
-  font-weight: 500;
-  height: 40px;
-  line-height: 40px;
-}
-
-.back-link:hover {
-  color: var(--primary-dark);
-}
-
-.ticket-desc {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.9rem;
-}
-
-.ticket-status {
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  min-width: 40px;
-  flex-shrink: 0;
-}
-
-/* Action button styling */
 .action-button {
   padding: 8px 16px;
-  margin-right: 10px;
   border: none;
   border-radius: 4px;
+  background-color: #54428f;
+  color: white;
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s;
@@ -891,44 +313,845 @@ button[type="submit"]:disabled {
 
 .action-button.in-progress {
   background-color: #f0ad4e;
-  color: white;
+}
+
+.action-button.open {
+  background-color: #54428f;
 }
 
 .action-button.closed {
   background-color: #5cb85c;
-  color: white;
 }
 
 .action-button.delete {
   background-color: #d9534f;
+}
+
+.action-button-small {
+  padding: 4px 8px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   color: white;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  margin-right: 5px;
+  display: inline-block;
 }
 
-.shortcut-hint {
-  opacity: 0.7;
-  font-size: 0.8em;
-  margin-left: 5px;
-  padding: 1px 4px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+.action-button-small.in-progress {
+  background-color: #faad14;
 }
 
-/* Empty state styling */
-.empty-state {
+.action-button-small.open {
+  background-color: #54428f;
+}
+
+.action-button-small.closed {
+  background-color: #52c41a;
+  font-weight: bold;
+  padding: 4px 10px;
+}
+
+.action-button-small.delete {
+  background-color: #f5222d;
+}
+
+.action-button-small:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.minecraft-theme .action-button-small {
+  font-family: 'Minecraft', monospace;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.minecraft-theme .action-button-small.in-progress {
+  background-color: #d9a334;
+}
+
+.minecraft-theme .action-button-small.open {
+  background-color: #54428f;
+}
+
+.minecraft-theme .action-button-small.closed {
+  background-color: #5b8731;
+  padding: 4px 10px;
+  font-weight: bold;
+}
+
+.minecraft-theme .action-button-small.delete {
+  background-color: #993333;
+}
+
+.minecraft-theme .action-button-small:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.tab-button:hover {
+  color: #54428f;
+}
+
+.tab-button.active {
+  color: #54428f;
+  border-bottom-color: #54428f;
+}
+
+/* Welcome Page */
+.welcome-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.welcome-header h2 {
+  color: #54428f;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+}
+
+.welcome-features {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 150px;
-  cursor: default;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  width: 100%;
 }
 
-.empty-message {
-  color: #888;
-  font-size: 16px;
+.feature {
+  flex: 1;
+  max-width: 250px;
   text-align: center;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.feature h3 {
+  color: #54428f;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  color: #666;
+}
+
+.welcome-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #54428f;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #3c2f64;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Login Page */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  border: 1px dashed #ccc;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  width: 80%;
+}
+
+.login-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #54428f;
+  text-align: center;
+}
+
+.login-subtitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.login-input:focus {
+  border-color: #54428f;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(84, 66, 143, 0.2);
+}
+
+.role-selector {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.role-option {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.role-option:hover {
+  background-color: #f5f5f5;
+}
+
+.role-option.selected {
+  background-color: #efe9ff;
+  border-color: #54428f;
+}
+
+.role-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.role-label {
+  font-weight: 500;
+}
+
+/* Default theme login button */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #54428f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #3c2f64;
+}
+
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.minecraft-theme .login-input {
+  background-color: #333;
+  border: 2px solid #000;
+  color: #fff;
+  font-family: 'Minecraft', monospace;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.minecraft-theme .login-input::placeholder {
+  color: #aaa;
+}
+
+.minecraft-theme .login-input:focus {
+  border-color: #5b8731;
+  box-shadow: 0 0 0 2px rgba(91, 135, 49, 0.3);
+}
+
+.minecraft-theme .role-option {
+  background-color: #333;
+  border: 2px solid #000;
+  color: #fff;
+  font-family: 'Minecraft', monospace;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.minecraft-theme .role-option:hover {
+  background-color: #444;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.minecraft-theme .role-option.selected {
+  background-color: #5b8731;
+  border-color: #000;
+  color: #fff;
+}
+
+.minecraft-theme .login-button {
+  background-color: #5b8731;
+  border: 2px solid #000;
+  font-family: 'Minecraft', monospace;
+  box-shadow: 2px 2px 0 #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 12px;
+}
+
+.minecraft-theme .login-button:hover {
+  background-color: #6b9741;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.theme-switcher-container {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.theme-text {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.theme-switcher {
+  display: flex;
+  justify-content: center;
+}
+
+.theme-button {
+  padding: 0.5rem 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-button:hover {
+  background-color: #e9ecef;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Minecraft Theme Styles */
+body.minecraft .header {
+  background-color: rgba(60, 60, 60, 0.9);
+  border: 2px solid #3d2817;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  padding: 15px 20px;
+  margin-bottom: 30px;
+}
+
+body.minecraft .header h1 {
+  color: #ffcc00;
+  font-family: 'Minecraft', monospace;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000;
+  letter-spacing: 1px;
+}
+
+body.minecraft .user-info {
+  background-color: rgba(80, 80, 80, 0.7);
+  padding: 8px 12px;
+  border-radius: 0;
+  border: 2px solid #3d2817;
+}
+
+body.minecraft .user-info span {
+  color: #aaa;
+  font-family: 'Minecraft', monospace;
+  text-shadow: 1px 1px 0px #000;
+}
+
+body.minecraft .user-info button {
+  background-color: #5b5b5b;
+  border: 2px solid #3d2817;
+  box-shadow: 0 3px 0 #3d2817;
+  font-family: 'Minecraft', monospace;
+  text-transform: uppercase;
+  transition: all 0.1s;
+  padding: 6px 12px;
+}
+
+body.minecraft .user-info button:hover {
+  background-color: #6b6b6b;
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #3d2817;
+}
+
+body.minecraft .ticket-view,
+body.minecraft .welcome-page,
+body.minecraft .login-page,
+body.minecraft .create-ticket-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: transparent;
+  background-image: none;
+}
+
+body.minecraft .ticket-list-container,
+body.minecraft .ticket-details,
+body.minecraft .welcome-content,
+body.minecraft .login-container {
+  background-color: rgba(60, 60, 60, 0.9);
+  border: 2px solid #3d2817;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+body.minecraft .ticket-list li {
+  border: 2px solid #3d2817;
+  background-color: rgba(70, 70, 70, 0.7);
+  margin-bottom: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.minecraft .ticket-list li:hover {
+  background-color: rgba(80, 80, 80, 0.9);
+  border-color: #5d4c41;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+body.minecraft .ticket-list li.selected {
+  background-color: rgba(100, 100, 100, 0.9);
+  border: 2px solid #ffcc00;
+  border-left: 6px solid #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+body.minecraft h1,
+body.minecraft h2,
+body.minecraft h3,
+body.minecraft .ticket-header h3,
+body.minecraft .welcome-header h2,
+body.minecraft .feature h3,
+body.minecraft .login-container h2 {
+  color: #ffcc00;
+  font-family: 'Minecraft', monospace;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000;
+}
+
+body.minecraft p,
+body.minecraft .ticket-description,
+body.minecraft .ticket-detail-description,
+body.minecraft .feature p,
+body.minecraft .welcome-header p,
+body.minecraft .login-subtitle {
+  color: #aaa;
+}
+
+body.minecraft .action-button,
+body.minecraft .nav-button,
+body.minecraft .nav-link,
+body.minecraft .login-button {
+  background-color: #5b5b5b;
+  border: 2px solid #3d2817;
+  box-shadow: 0 5px 0 #3d2817;
+  font-family: 'Minecraft', monospace;
+  text-transform: uppercase;
+  transition: all 0.1s;
+}
+
+body.minecraft .action-button:hover,
+body.minecraft .nav-button:hover,
+body.minecraft .nav-link:hover,
+body.minecraft .login-button:hover:not(:disabled) {
+  background-color: #6b6b6b;
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #3d2817;
+}
+
+body.minecraft .action-button.in-progress {
+  background-color: #d08c00;
+}
+
+body.minecraft .action-button.open {
+  background-color: #3b8eea;
+}
+
+body.minecraft .action-button.closed {
+  background-color: #2a8c3a;
+}
+
+body.minecraft .action-button.delete {
+  background-color: #8c2a2a;
+}
+
+body.minecraft .tabs {
+  border-bottom: 1px solid #3d2817;
+}
+
+body.minecraft .tab-button {
+  color: #aaa;
+  font-family: 'Minecraft', monospace;
+}
+
+body.minecraft .tab-button:hover {
+  color: #ffcc00;
+}
+
+body.minecraft .tab-button.active {
+  color: #ffcc00;
+  border-bottom-color: #ffcc00;
+}
+
+body.minecraft .login-form input,
+body.minecraft .login-form select {
+  background-color: #333;
+  border: 2px solid #3d2817;
+  color: #fff;
+}
+
+body.minecraft .login-form input:focus,
+body.minecraft .login-form select:focus {
+  border-color: #ffcc00;
+}
+
+body.minecraft .theme-button {
+  background-color: #5b5b5b;
+  border: 2px solid #3d2817;
+  color: #fff;
+}
+
+body.minecraft .theme-button:hover {
+  background-color: #6b6b6b;
+}
+
+body.minecraft .error-message {
+  background-color: rgba(136, 0, 0, 0.7);
+  border: 2px solid #3d2817;
+}
+
+.minecraft-theme {
+  background-color: #1D1F21;
+  color: #E6E6E6;
+  font-family: 'Minecraft', monospace;
+  image-rendering: pixelated;
+}
+
+.minecraft-theme .App {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABUSURBVDiNY2CgEDCh0RZGBgaGd0D8n4GBgZmRkfE/Aw5AjgFMDAwMH9HEcRrCxMDA8JGRkfE/IyMjA5o4XkCxAaMGjBowasCgMoCRgYHhHbkGAAC5EQv9zK/lzAAAAABJRU5ErkJggg==');
+  background-repeat: repeat;
+}
+
+.minecraft-theme .ticket-list li {
+  background-color: #2D2D2D;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.minecraft-theme .ticket-list li:hover {
+  background-color: #3D3D3D;
+  border-color: #555;
+}
+
+.minecraft-theme .ticket-list li.selected {
+  background-color: #3D3D3D;
+  border-left: 4px solid #5b8731;
+  border-color: #5b8731;
+}
+
+.minecraft-theme .ticket-header h3 {
+  color: #FFFFFF;
+  font-family: 'Minecraft', monospace;
+  font-size: 1.2rem;
+}
+
+.minecraft-theme .ticket-description {
+  color: #CCCCCC;
+  font-family: 'Minecraft', monospace;
+}
+
+.minecraft-theme .ticket-meta {
+  color: #AAAAAA;
+  font-family: 'Minecraft', monospace;
+  border-top: 1px solid #555;
+  padding-top: 5px;
+}
+
+.minecraft-theme .ticket-date {
+  color: #DDDDDD;
+}
+
+.minecraft-theme .ticket-creator {
+  color: #8BAC56;
+  font-weight: bold;
+}
+
+/* Create Ticket Form */
+.create-ticket-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-ticket-form .form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #54428f;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(84, 66, 143, 0.2);
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.create-button {
+  padding: 12px 24px;
+  background-color: #54428f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background-color: #3c2f64;
+}
+
+/* Minecraft Theme Create Ticket Form */
+.minecraft-theme .create-ticket-form {
+  background-color: #2D2D2D;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  padding: 16px;
+  image-rendering: pixelated;
+  position: relative;
+}
+
+.minecraft-theme .create-ticket-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABUSURBVDiNY2CgEDCh0RZGBgaGd0D8n4GBgZmRkfE/Aw5AjgFMDAwMH9HEcRrCxMDA8JGRkfE/IyMjA5o4XkCxAaMGjBowasCgMoCRgYHhHbkGAAC5EQv9zK/lzAAAAABJRU5ErkJggg==');
+  background-repeat: repeat;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.minecraft-theme .create-ticket-form .form-group {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.minecraft-theme .minecraft-label {
+  color: #FFFFFF;
+  font-family: 'Minecraft', monospace;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 12px;
+}
+
+.minecraft-theme .minecraft-input,
+.minecraft-theme .minecraft-textarea {
+  background-color: #1D1D1D;
+  border: 2px solid #000;
+  color: #EEEEEE;
+  font-family: 'Minecraft', monospace;
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  font-size: 14px;
+  image-rendering: pixelated;
+}
+
+.minecraft-theme .minecraft-input:focus,
+.minecraft-theme .minecraft-textarea:focus {
+  border-color: #5b8731;
+  box-shadow: 0 0 0 2px rgba(91, 135, 49, 0.3), inset 2px 2px 0 rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+.minecraft-theme .minecraft-textarea {
+  min-height: 180px;
+}
+
+.minecraft-theme .minecraft-button {
+  background-color: #5b8731;
+  border: 2px solid #000;
+  font-family: 'Minecraft', monospace;
+  box-shadow: 3px 3px 0 #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  position: relative;
+  transition: all 0.1s;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.minecraft-theme .minecraft-button:hover {
+  background-color: #6b9741;
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.minecraft-theme .minecraft-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 #000;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .ticket-list-container {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-features {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feature {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* App container */
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Set body and html to prevent scrolling */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
